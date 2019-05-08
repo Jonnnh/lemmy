@@ -1,6 +1,12 @@
-extern crate activitypub;
-use self::activitypub::{context, actor::Person};
+use super::*;
+use activitypub::{context, actor::Person};
 use db::user::User_;
+
+pub fn fetch(fedi_id: String) -> Result<Person, Error> {
+  let body = reqwest::get(&fedi_id)?.text()?;
+  let person: Person = serde_json::from_str(&body)?;
+  Ok(person)
+}
 
 impl User_ {
   pub fn person(&self) -> Person {

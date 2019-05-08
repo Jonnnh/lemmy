@@ -13,6 +13,8 @@ pub extern crate strum;
 pub extern crate jsonwebtoken;
 pub extern crate bcrypt;
 pub extern crate regex;
+pub extern crate activitypub;
+pub extern crate reqwest;
 
 pub mod schema;
 pub mod api;

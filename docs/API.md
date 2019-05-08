@@ -1,7 +1,5 @@
 # API
-
 - Start with the [reddit API](https://www.reddit.com/dev/api), and find [Activitypub vocab](https://www.w3.org/TR/activitystreams-vocabulary/) to match it.
-
 <!-- toc -->
 
 - [Actors](#actors)
@@ -42,7 +40,6 @@
 <!-- tocstop -->
 
 ## Actors
-
 ### [User / Person](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-person)
 ```
 {
@@ -67,7 +64,6 @@
   "summary"?: "This is sally's profile."
 }
 ```
-
 ### [Community / Group](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-group)
 ```
 {
@@ -84,9 +80,7 @@
   "attachment: [{}] // TBD, these would be where strong types for custom styles, and images would work.
 }
 ```
-
 ## Objects
-
 ### [Post / Page](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-page) 
 ```
 {
@@ -99,7 +93,6 @@
   "published": "2014-12-31T23:00:00-08:00",
 }
 ```
-
 ### [Post Listings / Ordered CollectionPage](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-orderedcollectionpage)
 ```
 {
@@ -110,7 +103,6 @@
   "orderedItems": [Posts]
 }
 ```
-
 ### [Comment / Note](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-note)
 ```
 {
@@ -150,7 +142,6 @@
 - These are all posts to a user's outbox.
 - The server then creates a post to the necessary inbox of the recipient, or the followers.
 - Whenever a user accesses the site, they do a get from their inbox.
-
 ### Comments
 #### [Create](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create)
 ```
@@ -190,7 +181,6 @@
   "object": comment_id
 }
 ```
-
 #### [Like](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-like)
 - TODO: Should likes be notifications? IE, have a to?
 ```
@@ -212,7 +202,6 @@
   // TODO different types of reactions, or no?
 }
 ```
-
 ### Posts
 #### [Create](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create)
 ```
@@ -233,7 +222,6 @@
   "object": comment_id, or post_id
 }
 ```
-
 #### [Update](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-update)
 ```
 {
@@ -253,7 +241,6 @@
   "object": post_id
 }
 ```
-
 ### Communities
 #### [Create](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create)
 ```
@@ -273,7 +260,6 @@
   "object": community_id
 }
 ```
-
 #### [Update](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-update)
 ```
 {
@@ -284,7 +270,6 @@
   TODO fields.
 }
 ```
-
 #### [Follow / Subscribe](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-follow)
 ```
 {
@@ -294,7 +279,6 @@
   "object": community_id
 }
 ```
-
 #### [Ignore/ Unsubscribe](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-ignore)
 ```
 {
@@ -304,27 +288,8 @@
   "object": community_id
 }
 ```
-#### [Join / Become a Mod](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-join)
-```
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Join",
-  "actor": user_id,
-  "object": community_id
-}
-```
-
-#### [Leave](https://www.w3.org/TR/activitystreams-vocabulary#dfn-leave)
-```
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Leave",
-  "actor": user_id,
-  "object": community_id
-}
-```
-
-### Moderator
+---
+### Moderator (Probably not doable. Mods must be on that server)
 #### [Ban user from community / Block](https://www.w3.org/TR/activitystreams-vocabulary#dfn-block)
 ```
 {
@@ -335,7 +300,6 @@
   "origin": group_id
 }
 ```
-
 #### [Delete Comment](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-delete)
 ```
 {
@@ -345,34 +309,3 @@
   "object": community_id
 }
 ```
-
-#### [Invite a moderator](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-invite)
-```
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Invite",
-  "id": "https://instance_url/api/v1/invite/1",
-  "actor": sally_id,
-  "object": group_id,
-  "target": john_id
-}
-```
-#### [Accept Invitation](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-accept)
-```
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Accept",
-  "actor": john_id,
-  "object": invite_id
-}
-```
-#### [Reject Invitation](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-reject)
-```
-{
-  "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Reject",
-  "actor": john_id,
-  "object": invite_id
-}
-```
-
