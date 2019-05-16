@@ -82,11 +82,11 @@
 }
 ```
 ## Objects
-### [Post / Page](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-page) 
+### [Post / Article](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-article) 
 ```
 {
   "@context": "https://www.w3.org/ns/activitystreams",
-  "type": "Page",
+  "type": "Article",
   "id": "https://instance_url/api/v1/post/1",
   "name": "The title of a post, maybe a link to imgur",
   "url": "https://news.blah.com"

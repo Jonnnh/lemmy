@@ -2,15 +2,17 @@ use super::*;
 use activitypub::{context, actor::Person};
 use db::user::User_;
 
+// Messages aren't sent person to person, but rather person to group
 pub fn fetch(fedi_id: String) -> Result<Person, Error> {
   let body = reqwest::get(&fedi_id)?.text()?;
   let person: Person = serde_json::from_str(&body)?;
   Ok(person)
 }
 
+
+
 impl User_ {
   pub fn person(&self) -> Person {
-    use {Settings, to_datetime_utc};
     let base_url = &format!("{}/user/{}", Settings::get().api_endpoint(), self.name);
     let mut person  = Person::default();
     person.object_props.set_context_object(context()).ok();
@@ -32,6 +34,7 @@ impl User_ {
 
     person
   }
+
 }
 
 #[cfg(test)]
