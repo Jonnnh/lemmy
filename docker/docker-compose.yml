@@ -14,8 +14,7 @@ services:
       timeout: 5s
       retries: 20
   lemmy:
-    build: 
-      context: .
+    image: dessalines/lemmy:latest
     ports:
       - "8536:8536"
     environment:
